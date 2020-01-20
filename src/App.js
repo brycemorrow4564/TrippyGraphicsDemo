@@ -1,7 +1,7 @@
 import React, { useReducer } from "react"; 
 import { RootProvider } from "./context/context"; 
-import AppContent from "./components/AppContent.jsx"; 
 import { reducer, reducerInitialState } from "./reducers/reducer"; 
+import AppContent from "./components/AppContent"; 
 
 import './css/App.css';
 import 'antd/dist/antd.css';
