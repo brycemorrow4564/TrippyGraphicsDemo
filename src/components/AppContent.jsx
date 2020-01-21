@@ -112,39 +112,77 @@ function AppContent(props) {
         video: wrapWithCenteringRow(<DynamicSizingVideo id="layout-clip" widthFraction={.65} />)
     }; 
 
-    return (
+    return <React.Fragment>
 
         <PageHeader
         title={header.title}
         subTitle={header.subtitle}
         backIcon={false}
         extra={<Button icon="github" href="https://github.com/brycemorrow4564/TrippyGraphics" target="_blank">Code</Button>}
-        footer={
-            <Tabs 
-            tabBarStyle={tabs.style}
-            defaultActiveKey="1">
-                <TabPane tab="Animations" key="1" >
-                    <div style={{ marginBottom: '1em' }}>
-                        {animationsTab.description}
-                        {animationsTab.video}
-                    </div>     
-                </TabPane>
-                <TabPane tab="Static Configurations" key="2" >
-                    <div style={{ marginBottom: '1em' }}>
-                        {staticConfigsTab.description}
-                        {staticConfigsTab.video}
-                    </div> 
-                </TabPane>
-                <TabPane tab="Layout" key="3" >
-                    <div style={{ marginBottom: '1em' }}>
-                        {layoutTab.description}
-                        {layoutTab.video}
-                    </div> 
-                </TabPane>
-            </Tabs>
-        }/>
+        />
+        <Row type="flex" justify="center">
+            <Col span={23}>
+                <Tabs
+                tabBarStyle={{}}
+                type="card"
+                defaultActiveKey="1"
+                >
+                    <TabPane
+                    tab="Interface"
+                    key="1">
+                        <div style={{ padding: 20, background: '#dedede', sizing: 'content-box' }}>
+                            <div className="card-container">
+                                <Tabs 
+                                tabBarStyle={tabs.style}
+                                defaultActiveKey="1">
+                                    <TabPane tab="Animations" key="1" >
+                                        <div style={{ marginBottom: '1em' }}>
+                                            {animationsTab.description}
+                                            {animationsTab.video}
+                                        </div>     
+                                    </TabPane>
+                                    <TabPane tab="Static Configurations" key="2" >
+                                        <div style={{ marginBottom: '1em' }}>
+                                            {staticConfigsTab.description}
+                                            {staticConfigsTab.video}
+                                        </div> 
+                                    </TabPane>
+                                    <TabPane tab="Layout" key="3" >
+                                        <div style={{ marginBottom: '1em' }}>
+                                            {layoutTab.description}
+                                            {layoutTab.video}
+                                        </div> 
+                                    </TabPane>
+                                </Tabs>
+                            </div>
+                        </div>
+                        
+                    </TabPane>
+                    <TabPane
+                    tab="About"
+                    key="2">
 
-    ); 
+                        <p style={Object.assign({ marginTop: '1em' }, basicTextStyle)}>
+                            This application was developed by 
+                            <a href="https://www.linkedin.com/in/bryce-morrow-181829128/" target="_blank"> Bryce Morrow</a>
+                        </p>
+
+                        <p> The inspiration for this project came when I started attending electronic music concerts.
+                            I've always 
+                            
+                            
+                            </p>
+
+
+
+                    </TabPane>
+                </Tabs>
+            </Col>
+        </Row>
+        <div style={{ height: 24, backgroundColor: "#fff" }}></div>
+        
+
+        </React.Fragment>; 
 
 }; 
 

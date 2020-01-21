@@ -4,6 +4,16 @@
   display: none; 
 }
 
-/* #root {
-  background-color: #a1cfdf;
-} */
+.card-container > .ant-tabs > .ant-tabs-content > .ant-tabs-tabpane {
+  background: #fff;
+  padding: 16px;
+}
+
+.card-container > .ant-tabs {
+  background-color: #fff;
+}
+
+.card-container > .ant-tabs > .ant-tabs-bar {
+  border-color: #fff;
+  background-color: #fff;
+}
