@@ -8,32 +8,62 @@ const { TabPane } = Tabs;
 
 function ViewCarousel(props) {
 
-    // const [width, setWidth] = useState(window.innerWidth); // current width of page 
+    const [width, setWidth] = useState(0); 
+    const [aspectRatio, setAspectRatio] = useState(0); 
     const videoContainerRef = useRef(null); 
-    const basicTextStyle = { fontSize: 18 }; 
+    const basicTextStyle = { fontSize: 18 };
+    const videoWidthFraction = .65;  
+
+    let getVideo = () => document.getElementById('animation-clip'); 
+
+    // Get dimensions once upon page load 
+    useEffect(() => {
+        setWidth(window.innerWidth); 
+    }, []);
+
+    // whenever the width changes, re-style the video 
+    useEffect(() => {
+        let video = getVideo(); 
+        if (video) {
+            let newWidth = width * videoWidthFraction; 
+            let newHeight = aspectRatio * newWidth; 
+            video.style.width = `${newWidth}px`;
+            video.style.height = `${newHeight}px`;  
+        }
+    }, [width]); 
 
     // width is synchronized to width of window 
     useEventListener('resize', () => {
-        // setWidth(window.innerWidth); 
+        setWidth(window.innerWidth); 
     }); 
 
     // store reference to video node on application load 
     useEffect(() => {  
         if (videoContainerRef.current) {
-            videoContainerRef.current.appendChild(document.getElementById('animation-clip')); 
+            // get the video 
+            let video = getVideo(); 
+            // ensure it is displayed 
+            video.style.display = 'block'; 
+            // save the aspect ratio of the video 
+            let { videoWidth, videoHeight } = video; 
+            setAspectRatio( videoHeight / videoWidth ); 
+            // add the video to its container 
+            videoContainerRef.current.appendChild(video); 
         } 
     }, [videoContainerRef]); 
 
     const createDescriptions = (keyPrefix, paragraphs) => {
         let wrap = (content) => <Row type="flex" justify="center" align="middle">
-                                    <Col>
+                                    <Col span={16}>
                                         {content}
                                     </Col>
                                 </Row>;
         let contents = []; 
         for (let i = 0; i < paragraphs.length; i++) {
             contents.push(
-                <Row style={ i === 0 ? { marginTop: "1em" } : {} } key={keyPrefix + `${i}`}>
+                <Row 
+                style={ i === 0 ? { marginTop: "1em" } : {} } 
+                key={keyPrefix + `${i}`}>
                     <Col>
                         <p style={basicTextStyle}>{paragraphs[i]}</p>
                     </Col>
@@ -41,10 +71,10 @@ function ViewCarousel(props) {
             ); 
         }
         return wrap(contents); 
-    }
+    }; 
 
     const header = {
-        title: 'Trippy Graphics', 
+        title: 'Trippy Graphics Experiments', 
         subtitle:  `An animation engine based on interpolation between 
                     user-defined states of a generative geometric system`, 
     }; 
@@ -52,7 +82,7 @@ function ViewCarousel(props) {
         style: {
             borderBottom: '1px solid rgb(235, 237, 240)',
         }
-    }
+    }; 
     const animations = {
         description: createDescriptions('animations', [
             `
@@ -70,10 +100,8 @@ function ViewCarousel(props) {
         ]),
         video: (
             <Row type="flex" justify="space-around" align="middle">
-                <Col span={18}>
-                    <div 
-                    ref={videoContainerRef}
-                    style={{ height: 720, pointerEvents: 'none' }} />
+                <Col>
+                    <div ref={videoContainerRef} />
                 </Col>
             </Row>
         )
@@ -102,8 +130,11 @@ function ViewCarousel(props) {
             tabBarStyle={tabs.style}
             defaultActiveKey="1">
                 <TabPane tab="Animations" key="1" >
-                    {animations.description}
-                    {animations.video}
+                    <div style={{ marginBottom: '1em' }}>
+                        {animations.description}
+                        {animations.video}
+                    </div>
+                    
                 </TabPane>
                 <TabPane tab="Static Configurations" key="2" >
                     {staticConfigs.description}
