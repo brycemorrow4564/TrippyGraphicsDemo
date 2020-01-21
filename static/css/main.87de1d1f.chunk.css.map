@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAEA,gBACE,YACF","file":"main.87de1d1f.chunk.css","sourcesContent":["@import '~antd/dist/antd.css';\n\n.vsc-controller {\n  display: none; \n}\n\n/* #root {\n  background-color: #a1cfdf;\n} */\n"]}
