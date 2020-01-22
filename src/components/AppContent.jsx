@@ -167,11 +167,22 @@ function AppContent(props) {
                                     <p className="description"> 
                                         I hope to have a fully functioning version of the tool online soon! 
                                     </p>
+
+                                    <p className="description">
+                                        If you would like to try out an older version of the tool, which allows you to play around 
+                                        with creating different static configurations of the engine and has the option to load 
+                                        in a few preset configurations, you can click on the button below. 
+                                    </p>
+
+                                    <Button 
+                                    icon="github" 
+                                    href="https://brycemorrow4564.github.io/TrippyGraphics/"
+                                    target="_blank" 
+                                    rel="noopener noreferrer">Old Demo</Button>
+                                    
                                 </Col>
                             </Row>
-
-
-
+                            
                         </div>
                     </TabPane>
                 </Tabs>
