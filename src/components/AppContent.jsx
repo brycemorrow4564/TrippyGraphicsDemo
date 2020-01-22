@@ -1,188 +1,164 @@
-import React, { useEffect, useState, useRef } from 'react'; 
-import { Row, Col, PageHeader, Tabs, Button, Divider } from "antd"; 
+import React from 'react'; 
+import { Row, Col, PageHeader, Tabs, Button } from "antd"; 
 import DynamicSizingVideo from "./DynamicSizingVideo"; 
 
 const { TabPane } = Tabs; 
 
 function AppContent(props) {
 
-    const basicTextStyle = { fontSize: 18 };
-    
-
-    const createDescriptions = (keyPrefix, paragraphs) => {
-        let wrap = (content) => <Row type="flex" justify="center" align="middle">
-                                    <Col span={16}>
-                                        {content}
-                                    </Col>
-                                </Row>;
-        let contents = []; 
-        for (let i = 0; i < paragraphs.length; i++) {
-            contents.push(
-                <Row 
-                style={ i === 0 ? { marginTop: "1em" } : {} } 
-                key={keyPrefix + `${i}`}>
-                    <Col>
-                        <p style={basicTextStyle}>{paragraphs[i]}</p>
-                    </Col>
-                </Row>
-            ); 
-        }
-        return wrap(contents); 
-    }; 
-
-    const wrapWithCenteringRow = (content) => (
-        <Row type="flex" justify="space-around" align="middle">
-            <Col>
-                {content}
-            </Col>
-        </Row>
-    ); 
-
-    const header = {
-        title: (
-            <Row type="flex" justify="space-around" align="middle">
-                <Col>
-                    <p style={{ display: 'inline-block', margin: '0 .8em 0 0' }}>Trippy Graphics Experiments</p>
-                </Col>
-                <span style={{ 
-                    color: '#1890ff', 
-                    height: 'auto', 
-                    margin: 0, 
-                    fontVariant: 'tabular-nums', 
-                    background: '#e6f7ff',
-                    border: '1px solid #91d5ff',
-                    borderRadius: 4, 
-                    padding: '0 8px', 
-                    lineHeight: '24px', 
-                    boxSizing: 'border-box', 
-                    whiteSpace: 'nowrap',
-                    listStyle: 'none', 
-                    fontSize: '14px', 
-                    cursor: 'default'
-                }}>
-                    beta
-                </span>
-            </Row>
-        ), 
-        subtitle:  `An animation engine based on interpolation between 
-                    user-defined states of a generative geometric system`, 
-    }; 
-    const tabs = {
-        style: {
-            borderBottom: '1px solid rgb(235, 237, 240)',
-        }
-    }; 
-    const animationsTab = {
-        description: createDescriptions('animations', [
-            `
-            The animation view of the application offers an interface for creating a sequential chain 
-            of interpolations between different static configurations of the geometric system.
-            `, 
-            `
-            Each animation can be programmed with a specific duration, easing function, and delay.
-            `, 
-            `
-            By coming up with a wide variety of unique static configurations, 
-            experimenting with the order of static configurations in the chain, 
-            and tweaking animation parameters, 
-            users can produce a wide variety of interesting visual effects. 
-            `
-        ]),
-        video: wrapWithCenteringRow(<DynamicSizingVideo id="animation-clip" widthFraction={.65} />)
-    };
-    const staticConfigsTab = {
-        description: createDescriptions('static', [
-            `
-            The static configuration view can be used to tweak parameters of the geometric
-            system in order to find interesting candidate configurations for use in animations.
-            `, 
-            `
-            Parameters include continuous numeric values, boolean values, and a color palette. 
-            `
-        ]), 
-        video: wrapWithCenteringRow(<DynamicSizingVideo id="static-clip" widthFraction={.65} />)
-    }; 
-    const layoutTab = {
-        description: createDescriptions('layout', [
-            `
-            Users can manipulate the view layout to maximize screen space while experimenting 
-            with different static configurations and animations. 
-            `
-        ]), 
-        video: wrapWithCenteringRow(<DynamicSizingVideo id="layout-clip" widthFraction={.65} />)
-    }; 
-
     return <React.Fragment>
 
+        {/* Page Header */}
         <PageHeader
-        title={header.title}
-        subTitle={header.subtitle}
+        title={
+            <Row type="flex" justify="space-around" align="middle">
+                <Col>
+                    <p className="page-title">Trippy Graphics Experiments</p>
+                </Col>
+            </Row>
+        }
+        subTitle={
+            `An animation engine based on interpolation between 
+             user-defined states of a generative geometric system`
+        }
         backIcon={false}
-        extra={<Button icon="github" href="https://github.com/brycemorrow4564/TrippyGraphics" target="_blank">Code</Button>}
+        extra={
+            <Button 
+            icon="github" 
+            href="https://github.com/brycemorrow4564/TrippyGraphics" 
+            target="_blank"
+            rel="noopener noreferrer">Code</Button>}
         />
+
+        {/* Page Content */}
         <Row type="flex" justify="center">
             <Col span={23}>
                 <Tabs
-                tabBarStyle={{}}
                 type="card"
                 defaultActiveKey="1"
-                >
+                className="top-tabs">
                     <TabPane
                     tab="Interface"
-                    key="1">
-                        <div style={{ padding: 20, background: '#dedede', sizing: 'content-box' }}>
+                    key="1"
+                    forceRender>
+                        <div style={{  margin: 10 }}>
                             <div className="card-container">
                                 <Tabs 
-                                tabBarStyle={tabs.style}
+                                type="card"
                                 defaultActiveKey="1">
-                                    <TabPane tab="Animations" key="1" >
+                                    <TabPane tab="Animations" key="1" forceRender>
                                         <div style={{ marginBottom: '1em' }}>
-                                            {animationsTab.description}
-                                            {animationsTab.video}
+                                            <Row type='flex' align="middle" style={{ paddingTop: 10 }}>
+                                                <Col span={6} offset={2}>
+                                                    <p className="description">
+                                                    The animation view of the application offers an interface for creating a sequential chain 
+                                                    of interpolations between different static configurations of the geometric system.
+                                                    </p>
+                                                    <p className="description">
+                                                    Each animation can be programmed with a specific duration, easing function, and delay.
+                                                    </p>
+                                                    <p className="description">
+                                                    By coming up with a wide variety of unique static configurations, 
+                                                    experimenting with the order of static configurations in the chain, 
+                                                    and tweaking animation parameters, 
+                                                    users can produce a wide variety of interesting visual effects. 
+                                                    </p>
+                                                </Col>
+                                                <Col offset={2}>
+                                                    <DynamicSizingVideo id="animation-clip" widthFraction={.5} />
+                                                </Col>
+                                            </Row>
                                         </div>     
                                     </TabPane>
-                                    <TabPane tab="Static Configurations" key="2" >
+                                    <TabPane tab="Static Configurations" key="2" forceRender>
                                         <div style={{ marginBottom: '1em' }}>
-                                            {staticConfigsTab.description}
-                                            {staticConfigsTab.video}
-                                        </div> 
+                                            <Row type='flex' align="middle" style={{ paddingTop: 10 }}>
+                                                <Col span={6} offset={2}>
+                                                    <p className="description">
+                                                    The static configuration view can be used to tweak parameters of the geometric
+                                                    system in order to find interesting candidate configurations for use in animations.
+                                                    </p>
+                                                    <p className="description">
+                                                    Parameter types include continuous numeric values, boolean values, and a color palette. 
+                                                    </p>
+                                                </Col>
+                                                <Col offset={2}>
+                                                    <DynamicSizingVideo id="static-clip" widthFraction={.5} />
+                                                </Col>
+                                            </Row>
+                                        </div>
                                     </TabPane>
-                                    <TabPane tab="Layout" key="3" >
+                                    <TabPane tab="Layout" key="3" forceRender>
                                         <div style={{ marginBottom: '1em' }}>
-                                            {layoutTab.description}
-                                            {layoutTab.video}
-                                        </div> 
+                                            <Row type='flex' align="middle" style={{ paddingTop: 10 }}>
+                                                <Col span={6} offset={2}>
+                                                    <p className="description">
+                                                    Users can manipulate the view layout to maximize screen space while experimenting 
+                                                    with different static configurations and animations. 
+                                                    </p>
+                                                </Col>
+                                                <Col offset={2}>
+                                                    <DynamicSizingVideo id="layout-clip" widthFraction={.5} />
+                                                </Col>
+                                            </Row>
+                                        </div>
                                     </TabPane>
                                 </Tabs>
                             </div>
                         </div>
-                        
                     </TabPane>
                     <TabPane
                     tab="About"
-                    key="2">
-
-                        <p style={Object.assign({ marginTop: '1em' }, basicTextStyle)}>
-                            This application was developed by 
-                            <a href="https://www.linkedin.com/in/bryce-morrow-181829128/" target="_blank"> Bryce Morrow</a>
-                        </p>
-
-                        <p> The inspiration for this project came when I started attending electronic music concerts.
-                            I've always 
-                            
-                            
+                    key="2"
+                    forceRender>
+                        <div style={{ margin: 10}}>
+                            <p className="description" style={{ marginTop: '1em' }}>
+                                This application was developed by 
+                                <a 
+                                href="https://www.linkedin.com/in/bryce-morrow-181829128/" 
+                                target="_blank" 
+                                rel="noopener noreferrer"> Bryce Morrow</a>
                             </p>
 
+                            <p className="description"> 
+                                I was inspired to start this project when I attended my first electronic music festival.
+                                For the first time, I saw how artists used custom graphics to create amazing audio-visual 
+                                experiences of music. I knew then and there that it was something that I myself wanted to 
+                                explore. 
+                            </p>
 
+                            <p className="description"> 
+                                Having no prior background in 3D computer graphics, I started with a simple premise: 
+                                What kind of graphics could I make using only rectangles? 
+                                This project is the result of my exploration of that seemingly simple question.
+                            </p>
 
+                            <p className="description"> 
+                                After I came up with a generative system that was pretty interesting, I decided that I  
+                                wanted to make its functionality available to others to use for fun and for free. So 
+                                I built a GUI to allow users to easily explore to possible space of visual effects that
+                                this tool is capable of. 
+                            </p>
+
+                            <p className="description"> 
+                                Though the tool has no built in audio component, I enjoy experimenting with the interface
+                                while listening to music I enjoy. In the future, I might expand the functionality of the 
+                                tool so that it can take audio as an input source and use this signal to drive animations. 
+                            </p>
+
+                            <p className="description"> 
+                                I hope to have a fully functioning version of the tool online soon! 
+                            </p>
+                        </div>
                     </TabPane>
                 </Tabs>
             </Col>
         </Row>
-        <div style={{ height: 24, backgroundColor: "#fff" }}></div>
+
+        <div className='bottom-spacing'/>
         
 
-        </React.Fragment>; 
+    </React.Fragment>; 
 
 }; 
 

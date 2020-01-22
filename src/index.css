@@ -4,16 +4,28 @@
   display: none; 
 }
 
-.card-container > .ant-tabs > .ant-tabs-content > .ant-tabs-tabpane {
-  background: #fff;
-  padding: 16px;
+.ant-tabs > .ant-tabs-bar {
+  margin-bottom: 0; 
 }
 
-.card-container > .ant-tabs {
-  background-color: #fff;
+.top-tabs .ant-tabs-content {
+  border-left: 1px solid #ecedf0; 
+  border-right: 1px solid #ecedf0; 
+  border-bottom: 1px solid #ecedf0; 
 }
 
-.card-container > .ant-tabs > .ant-tabs-bar {
-  border-color: #fff;
-  background-color: #fff;
+.description {
+  font-size: 18px;
 }
+
+.page-title {
+  display: 'inline-block';
+  margin: '0 .8em 0 0';
+}
+
+.bottom-spacing {
+  height: 24px;
+  background-color: "#fff"; 
+}
+
+
