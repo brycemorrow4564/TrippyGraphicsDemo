@@ -51,7 +51,7 @@ function AppContent(props) {
                                             <Row type='flex' align="middle" style={{ paddingTop: 10 }}>
                                                 <Col span={6} offset={2}>
                                                     <p className="description">
-                                                    The animation view of the application offers an interface for creating a sequential chain 
+                                                    The <b>animation view</b> of the application offers an interface for creating a sequential chain 
                                                     of interpolations between different static configurations of the geometric system.
                                                     </p>
                                                     <p className="description">
@@ -75,7 +75,7 @@ function AppContent(props) {
                                             <Row type='flex' align="middle" style={{ paddingTop: 10 }}>
                                                 <Col span={6} offset={2}>
                                                     <p className="description">
-                                                    The static configuration view can be used to tweak parameters of the geometric
+                                                    The <b>static configuration view</b> can be used to tweak parameters of the geometric
                                                     system in order to find interesting candidate configurations for use in animations.
                                                     </p>
                                                     <p className="description">
@@ -93,8 +93,9 @@ function AppContent(props) {
                                             <Row type='flex' align="middle" style={{ paddingTop: 10 }}>
                                                 <Col span={6} offset={2}>
                                                     <p className="description">
-                                                    Users can manipulate the view layout to maximize screen space while experimenting 
-                                                    with different static configurations and animations. 
+                                                    The <b>layout view</b> offers users the flexibility to manipulate the view layout
+                                                    to maximize screen space while experimenting with different static configurations 
+                                                    and animations. 
                                                     </p>
                                                 </Col>
                                                 <Col offset={2}>
@@ -112,43 +113,65 @@ function AppContent(props) {
                     key="2"
                     forceRender>
                         <div style={{ margin: 10}}>
-                            <p className="description" style={{ marginTop: '1em' }}>
-                                This application was developed by 
-                                <a 
-                                href="https://www.linkedin.com/in/bryce-morrow-181829128/" 
-                                target="_blank" 
-                                rel="noopener noreferrer"> Bryce Morrow</a>
-                            </p>
 
-                            <p className="description"> 
-                                I was inspired to start this project when I attended my first electronic music festival.
-                                For the first time, I saw how artists used custom graphics to create amazing audio-visual 
-                                experiences of music. I knew then and there that it was something that I myself wanted to 
-                                explore. 
-                            </p>
+                            <Row type="flex" justify="space-around">
+                                <Col span={16}>
+                                    <p className="description" style={{ marginTop: '1em' }}>
+                                        This application was developed by <b>Bryce Morrow</b>
+                                        <Button 
+                                        className="social-btn" 
+                                        icon="linkedin" 
+                                        shape="circle" 
+                                        href="https://www.linkedin.com/in/bryce-morrow-181829128/"
+                                        target="_blank" 
+                                        rel="noopener noreferrer"/>
+                                        <Button 
+                                        className="social-btn" 
+                                        icon="github" 
+                                        shape="circle" 
+                                        href="https://github.com/brycemorrow4564"
+                                        target="_blank" 
+                                        rel="noopener noreferrer"/>
+                                    </p>
 
-                            <p className="description"> 
-                                Having no prior background in 3D computer graphics, I started with a simple premise: 
-                                What kind of graphics could I make using only rectangles? 
-                                This project is the result of my exploration of that seemingly simple question.
-                            </p>
+                                    <p className="description"> 
+                                        I was inspired to start this project when I attended my first electronic music festival.
+                                        For the first time, I saw how artists used custom graphics to create amazing audio-visual 
+                                        experiences of music. I knew then and there that it was something that I myself wanted to 
+                                        explore. 
+                                    </p>
 
-                            <p className="description"> 
-                                After I came up with a generative system that was pretty interesting, I decided that I  
-                                wanted to make its functionality available to others to use for fun and for free. So 
-                                I built a GUI to allow users to easily explore to possible space of visual effects that
-                                this tool is capable of. 
-                            </p>
+                                    <p className="description"> 
+                                        Having no background in 3D graphics, I started simple with a single investigative premise: 
+                                        <br></br>
+                                        <b>What kind of graphics could I make using only rectangles?</b>
+                                    </p>
 
-                            <p className="description"> 
-                                Though the tool has no built in audio component, I enjoy experimenting with the interface
-                                while listening to music I enjoy. In the future, I might expand the functionality of the 
-                                tool so that it can take audio as an input source and use this signal to drive animations. 
-                            </p>
+                                    <p className="description"> 
+                                        This project is the result of my exploration of that seemingly simple question.
+                                    </p>
 
-                            <p className="description"> 
-                                I hope to have a fully functioning version of the tool online soon! 
-                            </p>
+                                    <p className="description"> 
+                                        After I came up with a generative system that was pretty interesting, I decided that I  
+                                        wanted to make its functionality available to others to use for fun and for free. So 
+                                        I built a GUI to allow users to easily explore to possible space of visual effects that
+                                        this tool is capable of. 
+                                    </p>
+
+                                    <p className="description"> 
+                                        Though the tool has no built in audio component, I enjoy experimenting with the interface
+                                        while listening to music I enjoy. In the future, I might expand the functionality of the 
+                                        tool so that it can take audio as an input source and use this signal to drive animations. 
+                                    </p>
+
+                                    <p className="description"> 
+                                        I hope to have a fully functioning version of the tool online soon! 
+                                    </p>
+                                </Col>
+                            </Row>
+
+
+
                         </div>
                     </TabPane>
                 </Tabs>
